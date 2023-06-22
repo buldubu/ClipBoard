@@ -10,7 +10,7 @@
 		68A96D182A43A5CD00188876 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A96D172A43A5CD00188876 /* AppDelegate.swift */; };
 		68A96D1A2A43A5CD00188876 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A96D192A43A5CD00188876 /* ViewController.swift */; };
 		68A96D1C2A43A5CE00188876 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68A96D1B2A43A5CE00188876 /* Assets.xcassets */; };
-		68A96D1F2A43A5CE00188876 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68A96D1D2A43A5CE00188876 /* Main.storyboard */; };
+		68A96D272A43A75D00188876 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A96D262A43A75D00188876 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,8 +18,8 @@
 		68A96D172A43A5CD00188876 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68A96D192A43A5CD00188876 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		68A96D1B2A43A5CE00188876 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		68A96D1E2A43A5CE00188876 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		68A96D202A43A5CE00188876 /* ClipBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClipBoard.entitlements; sourceTree = "<group>"; };
+		68A96D262A43A75D00188876 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,10 +52,10 @@
 		68A96D162A43A5CD00188876 /* ClipBoard */ = {
 			isa = PBXGroup;
 			children = (
+				68A96D262A43A75D00188876 /* main.swift */,
 				68A96D172A43A5CD00188876 /* AppDelegate.swift */,
 				68A96D192A43A5CD00188876 /* ViewController.swift */,
 				68A96D1B2A43A5CE00188876 /* Assets.xcassets */,
-				68A96D1D2A43A5CE00188876 /* Main.storyboard */,
 				68A96D202A43A5CE00188876 /* ClipBoard.entitlements */,
 			);
 			path = ClipBoard;
@@ -120,7 +120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				68A96D1C2A43A5CE00188876 /* Assets.xcassets in Resources */,
-				68A96D1F2A43A5CE00188876 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,21 +132,11 @@
 			files = (
 				68A96D1A2A43A5CD00188876 /* ViewController.swift in Sources */,
 				68A96D182A43A5CD00188876 /* AppDelegate.swift in Sources */,
+				68A96D272A43A75D00188876 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		68A96D1D2A43A5CE00188876 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				68A96D1E2A43A5CE00188876 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		68A96D212A43A5CE00188876 /* Debug */ = {
@@ -269,22 +258,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ClipBoard/ClipBoard.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9CFKG2WF7U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ClipBoard;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = buldubu.ClipBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -296,22 +290,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ClipBoard/ClipBoard.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9CFKG2WF7U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ClipBoard;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = buldubu.ClipBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
