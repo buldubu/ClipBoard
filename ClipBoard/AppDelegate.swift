@@ -14,6 +14,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var clipboardHistory: [String] = []
     var statusItemStartPoint: Int = 0
     var statusItemFinishPoint: Int = 0
+    var lineLength: Int = 50
+    var timer: Timer!
+    var timerInterval: Double = 0.1
+    var changeCount: Int = NSPasteboard.general.changeCount
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -21,6 +25,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.image = NSImage(systemSymbolName: "c.circle", accessibilityDescription: "c")
         }
         setupMenus()
+        timer = Timer.scheduledTimer(timeInterval: timerInterval, target: self, selector: #selector(checkChangeCount), userInfo: nil, repeats: true)
+    }
+    
+    @objc func checkChangeCount() {
+        if NSPasteboard.general.changeCount == changeCount {
+            return
+        }
+        changeCount = NSPasteboard.general.changeCount
+        self.SaveClipboard()
     }
 
     func setupMenus() {
@@ -38,6 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+        timer.invalidate()
     }
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
@@ -52,17 +66,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func SaveClipboard() {
-        let clipboard = NSPasteboard.general.string(forType: .string)
-        let menuItem = NSMenuItem(title: String(clipboard!.prefix(50)), action: #selector(TapString), keyEquivalent: "")
+        guard let clipboard = NSPasteboard.general.string(forType: .string) else { return }
+        let menuItem = NSMenuItem(title: String(clipboard.prefix(lineLength)), action: #selector(TapString), keyEquivalent: "")
         menuItem.tag = clipboardHistory.count
-        clipboardHistory.append(clipboard!)
+        clipboardHistory.append(clipboard)
         statusItem.menu?.insertItem(menuItem, at: statusItemStartPoint)
         rearrange()
         statusItemFinishPoint += 1
     }
     
     @objc func rearrange() {
-        for i in 0...8 {
+        for i: Int in 0...8 {
             if (statusItemFinishPoint - i < statusItemStartPoint){
                 break
             }
@@ -73,6 +87,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         if (statusItemFinishPoint - 10 >= statusItemStartPoint){
             statusItem.menu?.item(at: (statusItemStartPoint+10))?.keyEquivalent = ""
+        }
+        if (statusItemFinishPoint - 50 >= statusItemStartPoint){
+            statusItem.menu?.removeItem(at: statusItemStartPoint+12)
+            statusItemFinishPoint -= 1
         }
     }
     
